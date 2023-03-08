@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
     'profiles',
     'public_screenshots',
+    'category',
 ]
 
 MIDDLEWARE = [
