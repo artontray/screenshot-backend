@@ -1,6 +1,7 @@
 from django.http import Http404
 from rest_framework import status
 from rest_framework import permissions
+from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Category
@@ -8,35 +9,22 @@ from .serializers import CategorySerializer
 from scrshot_api.permissions import IsOwnerOrReadOnly, IsOwner, IsLoggedIn
 
 
-class CategoryList(APIView):
+class CategoryList(generics.ListCreateAPIView):
     """
     List all Category for the logged user
-    No Create view (post method), as profile creation handled by django signals
+    First category creation handled by django signals when creating an New User,
+    more category can be created by user.
     """
     permission_classes = [IsLoggedIn]
     serializer_class = CategorySerializer
-    def get(self, request):
-        categories = Category.objects.all().filter(owner=request.user)
-        self.check_object_permissions(self.request, categories)
-        serializer = CategorySerializer(
-            categories, many=True, context={'request': request}
-        )
-        return Response(serializer.data)
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+  
 
-    def post(self, request):
-        serializer = CategorySerializer(
-            data=request.data, context={'request': request}
-        )
-        if serializer.is_valid():
-            serializer.save(owner=request.user)
-            return Response(
-                serializer.data, status=status.HTTP_201_CREATED
-            )
-        return Response(
-            serializer.errors, status=status.HTTP_400_BAD_REQUEST
-        )
+    def get_queryset(self):
+        return Category.objects.all().filter(owner=self.request.user)
 
-class CategoryDetail(APIView):
+class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CategorySerializer
     permission_classes = [IsOwner]
 
