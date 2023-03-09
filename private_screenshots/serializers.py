@@ -31,7 +31,7 @@ class PrivateScreenshotSerializer(serializers.ModelSerializer):
 
     def get_fields(self, *args, **kwargs):
         '''
-        Function to only shows category owned bu logged current user
+        Function to only shows category owned by logged current user
         '''
         fields = super(PrivateScreenshotSerializer, self).get_fields(*args, **kwargs)
         request = self.context['request']

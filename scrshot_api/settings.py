@@ -53,6 +53,9 @@ INSTALLED_APPS = [
     'public_screenshots',
     'category',
     'private_screenshots',
+    'comment',
+    'followers',
+    'likes',
 ]
 
 MIDDLEWARE = [

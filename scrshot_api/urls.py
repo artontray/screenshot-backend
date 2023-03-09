@@ -23,4 +23,7 @@ urlpatterns = [
     path('', include('public_screenshots.urls')),
     path('', include('category.urls')),
     path('', include('private_screenshots.urls')),
+    path('', include('comment.urls')),
+    path('', include('followers.urls')),
+    path('', include('likes.urls')),
 ]
