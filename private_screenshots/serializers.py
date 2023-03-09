@@ -10,10 +10,9 @@ class PrivateScreenshotSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
-    category_id = serializers.ReadOnlyField(source='owner.category.id')
-    category_title = serializers.ReadOnlyField(source='owner.category.title')
-    #category = serializers.PrimaryKeyRelatedField(
-    #    many=True, queryset=Category.objects.all().filter(owner__username='admin'))
+
+    category_title = serializers.ReadOnlyField(source='category.title')
+    
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -58,7 +57,6 @@ class PrivateScreenshotSerializer(serializers.ModelSerializer):
             'is_owner',
             'profile_id',
             'profile_image',
-            'category_id',
             'category',
             'category_title',
         ]
