@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('profiles.urls')),
     path('', include('public_screenshots.urls')),
     path('', include('category.urls')),
+    path('', include('private_screenshots.urls')),
 ]
