@@ -1,11 +1,14 @@
 from django.http import Http404
 from rest_framework import status
-from rest_framework import permissions
+from rest_framework import permissions, filters
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Category
+from django_filters.rest_framework import DjangoFilterBackend
+from django.db.models import Count
 from .serializers import CategorySerializer
+from private_screenshots.models import PrivateScreenshot
 from scrshot_api.permissions import IsOwnerOrReadOnly, IsOwner, IsLoggedIn
 
 
@@ -17,6 +20,7 @@ class CategoryList(generics.ListCreateAPIView):
     """
     permission_classes = [IsLoggedIn]
     serializer_class = CategorySerializer
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
   
@@ -24,10 +28,25 @@ class CategoryList(generics.ListCreateAPIView):
     def get_queryset(self):
         return Category.objects.all().filter(owner=self.request.user)
 
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+
+    search_fields = [
+        'title',
+        'description',
+    ]
+    ordering_fields = [
+        'private_screenshots_count',
+    ]
+
+
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CategorySerializer
     permission_classes = [IsOwner]
-
+    
     def get_object(self, pk):
         try:
             categories = Category.objects.get(pk=pk)
@@ -41,6 +60,7 @@ class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
         serializer = CategorySerializer(
             categories, context={'request': request}
         )
+        
         return Response(serializer.data)
 
     def put(self, request, pk):
