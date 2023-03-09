@@ -20,8 +20,8 @@ class FollowerList(generics.ListCreateAPIView):
 class FollowerDetail(generics.RetrieveDestroyAPIView):
     """
     Retrieve a follower
-    No Update view, as we either follow or unfollow users
-    Destroy a follower, i.e. unfollow someone if owner
+    No Update view needed. you follow or delete a follow. 
+    no updates situation here
     """
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Follower.objects.all()
