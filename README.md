@@ -32,7 +32,7 @@ some ability to :
 - build an App with Back-End and Front-end developpement
 - code with ReactJS
 
-[Check this out]()
+[Check this out](>)
 
 # Screenshot Organizer
 
@@ -43,6 +43,62 @@ In a world where we are constantly bombarded with information, a screenshot can 
 The act of taking a screenshot is a form of creative expression, capturing an instant in time that can never be replicated. It's a reflection of who we are and the world we inhabit, offering a glimpse into our digital experiences.
 
 So, whether it's a funny meme, a touching message from a loved one, or an inspirational quote, a screenshot has the power to bring people together and create a shared experience. It's a testament to the power of technology and a such of unique ways in which it allows us to connect and express ourselves.
+
+# Contents
+
+* [Database Schema](<#database-schema>)
+* [Technologies Used](<#technologies-used>)
+     * [Modules](<#modules>)
+     * [Languages](<#languages>)
+     * [Libraries](<#libraries>)
+     * [Frameworks](<#frameworks>)
+     * [Platforms](<#platforms>)
+     * [Services](<#services>)
+     * [Resources](<#resources>)
+* [Testing](#testing)
+     * [APITestCase](#Aapitestcase)
+     * [Manual Testing](#manual-testing)
+     * [URL Testing](#url-testing)
+     * [CRUD Testing](#crud-testing)
+     * [Validator Testing](#validator-testing)
+* [Bugs](<#bugs>)
+    * [Fixed](<#fixed>)
+    * [Unfixed](<#unfixed>)
+* [Project Setup](<#project-setup>)
+* [Deployment](<#deployment>)
+    * [Set up JSON web tokens](<#set-up-json-web-tokens>)
+    * [API for deployment to Heroku](<#api-for-deployment-to-heroku>)
+    * [Deploy to Heroku](<#deploy-to-heroku>)
+    * [extra environment variables](<#extra-environment-variables>)
+* [Credits](<#credits>)
+* [Media](<#media>)
+
+
+# Database Schema
+
+The database for this project is composed by :
+
+- User : To store a new user's username and password.
+- Profiles : to register User's Profile (avatar, description etc..)
+- Screenshot_public : to store a post with a screenshot, content, title , image.
+- Scrennshot_private : to store a post with a private screenshot : content, image, title, category (see below)
+- Category : to store all the different categories of private screenshots (emails, jobs, entertainement, flights, meetings, social media etc...)
+- Comment : to store all the comment connected to a public screenshot
+- followers : to store all the followers and followings id of user so we known who is following who
+- likes : to store all the likes register to public screenshots
+
+To accomplish this, I had to develop a database table model to streamline the application's functionality. I used [Visual Studio Code](https://code.visualstudio.com/) to generate the following :
+
+![DASHBOARD](media/readme-files/TABLE_SCREENSHOT_ORGANIZER.png)
+
+[Back to top](<#contents>)
+
+
+# Testing
+
+
+
+
 
 
 
