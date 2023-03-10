@@ -25,14 +25,6 @@ class Category(models.Model):
     def __str__(self):
         return f'{self.id} {self.title}'
     
-    @property
-    def nb_screenshots_inside_each_category(self):
-        """
-        Return 
-        """
-        if not hasattr(self, "_nb_screenshots_inside_each_category"):
-            self._nb_screenshots_inside_each_category = 12
-        return self._nb_screenshots_inside_each_category
 
 def create_category(sender, instance, created, **kwargs):
     if created:
