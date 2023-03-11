@@ -9,7 +9,7 @@ class CommentList(generics.ListCreateAPIView):
     List comments or create a comment if logged in.
     """
     serializer_class = CommentSerializer
-    permission_classes = [IsLoggedIn]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Comment.objects.all()
 
     def perform_create(self, serializer):

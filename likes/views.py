@@ -8,7 +8,7 @@ class LikeList(generics.ListCreateAPIView):
     """
     List likes or create a like if logged in.
     """
-    permission_classes = [IsLoggedIn]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = LikeSerializer
     queryset = Like.objects.all()
 

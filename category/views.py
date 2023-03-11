@@ -18,7 +18,7 @@ class CategoryList(generics.ListCreateAPIView):
     First category creation handled by django signals when creating an New User,
     more category can be created by user.
     """
-    permission_classes = [IsLoggedIn]
+    permission_classes = [IsOwner]
     serializer_class = CategorySerializer
 
     def perform_create(self, serializer):

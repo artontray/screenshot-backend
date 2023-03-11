@@ -9,7 +9,7 @@ class FollowerList(generics.ListCreateAPIView):
     List all followers, i.e. all instances of a user
     following another user'.
     """
-    permission_classes = [IsLoggedIn]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Follower.objects.all()
     serializer_class = FollowerSerializer
 
