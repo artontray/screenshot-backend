@@ -9,7 +9,7 @@ class Profile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     description = models.TextField(blank=True)
     image = models.ImageField(
-        upload_to='images/', default='../logo_user_undefined_gom6nt'
+        upload_to='images/', default='../avatar_yidcjz'
     )
 
     class Meta:
