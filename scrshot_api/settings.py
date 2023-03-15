@@ -71,7 +71,7 @@ DATABASES = {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #   }
-}
+#}
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
