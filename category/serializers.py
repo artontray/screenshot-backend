@@ -33,6 +33,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
+        ordering = ['-private_screenshots_count']
         fields = [
             'id',
             'owner', 

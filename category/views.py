@@ -23,10 +23,13 @@ class CategoryList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
-  
+
 
     def get_queryset(self):
-        return Category.objects.all().filter(owner=self.request.user)
+        queryset = Category.objects.filter(owner=self.request.user).annotate(
+                    private_screenshots_count=Count('private_scrt_count', distinct=True)
+                ).order_by('-created_at')
+        return queryset
 
     filter_backends = [
         filters.OrderingFilter,

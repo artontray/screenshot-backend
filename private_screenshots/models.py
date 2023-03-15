@@ -9,7 +9,7 @@ class PrivateScreenshot(models.Model):
     Default image set so that we can always reference image.url.
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category,related_name='private_scrt_count', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)

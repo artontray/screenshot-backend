@@ -13,7 +13,7 @@ class Category(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    title = models.CharField(max_length=50, default='Main', blank=False)
+    title = models.CharField(max_length=25, default='Main', blank=False)
     description = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/', default='../category_image_mktm2q', blank=True
