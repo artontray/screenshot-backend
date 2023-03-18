@@ -18,7 +18,6 @@ class ProfileSerializer(serializers.ModelSerializer):
     def get_nb_screenshots_public(self, obj):
         return PublicScreenshot.objects.all().filter(owner=obj.owner).count()
 
-
     def get_nb_screenshots_private(self, obj):
         return PrivateScreenshot.objects.all().filter(owner=obj.owner).count()
 
@@ -39,16 +38,16 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = [
-            'id', 
-            'owner', 
-            'created_at', 
-            'updated_at', 
-            'description', 
-            'image', 
-            'is_owner', 
+            'id',
+            'owner',
+            'created_at',
+            'updated_at',
+            'description',
+            'image',
+            'is_owner',
             'following_id',
-            'posts_count', 
-            'followers_count', 
+            'posts_count',
+            'followers_count',
             'following_count',
             'nb_screenshots_public',
             'nb_screenshots_private',

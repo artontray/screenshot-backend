@@ -9,6 +9,7 @@ from .models import PublicScreenshot
 from .serializers import PublicScreenshotSerializer
 from scrshot_api.permissions import IsOwnerOrReadOnly
 
+
 class PublicScreenshotList(generics.ListCreateAPIView):
     serializer_class = PublicScreenshotSerializer
     permission_classes = [
@@ -43,8 +44,6 @@ class PublicScreenshotList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-
-
 class PublicScreenshotDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = PublicScreenshotSerializer
@@ -52,5 +51,3 @@ class PublicScreenshotDetail(generics.RetrieveUpdateDestroyAPIView):
         likes_count=Count('likes', distinct=True),
         comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
-
-

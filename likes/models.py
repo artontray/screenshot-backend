@@ -6,8 +6,10 @@ from public_screenshots.models import PublicScreenshot
 class Like(models.Model):
     """
     Like model, related to owner and PublicScreenshot
-    owner is a User instance and PublicScreenshot is a PublicScreenshot instance.
-    unique_together makes sure a user can't like the same PublicScreenshot twice.
+    owner is a User instance and PublicScreenshot is a
+    PublicScreenshot instance.
+    unique_together makes sure a user can't like the same
+    PublicScreenshot twice.
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     public_screenshot = models.ForeignKey(

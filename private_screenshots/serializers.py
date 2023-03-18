@@ -5,14 +5,13 @@ from scrshot_api.permissions import IsOwner
 
 
 class PrivateScreenshotSerializer(serializers.ModelSerializer):
-    
+
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
 
     category_title = serializers.ReadOnlyField(source='category.title')
-    
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -27,17 +26,17 @@ class PrivateScreenshotSerializer(serializers.ModelSerializer):
             )
         return value
 
-
     def get_fields(self, *args, **kwargs):
         '''
         Function to only shows category owned by logged current user
         '''
-        fields = super(PrivateScreenshotSerializer, self).get_fields(*args, **kwargs)
+        fields = super(
+            PrivateScreenshotSerializer, self).get_fields(*args, **kwargs)
         request = self.context['request']
         owner = request.user
-        fields['category'].queryset = fields['category'].queryset.filter(owner=owner)
+        fields['category'].queryset = fields['category'].queryset.filter(
+            owner=owner)
         return fields
-
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -48,11 +47,11 @@ class PrivateScreenshotSerializer(serializers.ModelSerializer):
         model = PrivateScreenshot
         fields = [
             'id',
-            'owner', 
-            'created_at', 
-            'updated_at', 
-            'title', 
-            'content', 
+            'owner',
+            'created_at',
+            'updated_at',
+            'title',
+            'content',
             'image',
             'is_owner',
             'profile_id',

@@ -24,12 +24,11 @@ class Category(models.Model):
 
     def __str__(self):
         return f'{self.id} {self.title}'
-    
+
 
 def create_category(sender, instance, created, **kwargs):
     if created:
         Category.objects.create(owner=instance)
 
-post_save.connect(create_category, sender=User)
 
-    
+post_save.connect(create_category, sender=User)

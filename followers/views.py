@@ -20,7 +20,7 @@ class FollowerList(generics.ListCreateAPIView):
 class FollowerDetail(generics.RetrieveDestroyAPIView):
     """
     Retrieve a follower
-    No Update view needed. you follow or delete a follow. 
+    No Update view needed. you follow or delete a follow.
     no updates situation here
     """
     permission_classes = [IsOwnerOrReadOnly]

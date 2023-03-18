@@ -18,10 +18,6 @@ import re
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
-
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -49,13 +45,10 @@ if 'DEV' not in os.environ:
     ]
 
 
-
-
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOST'),
    'localhost',
 ]
-
 
 
 DATABASES = {
@@ -68,12 +61,12 @@ DATABASES = {
 }
 
 
-#DATABASES = {
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #   }
-#}
+# }
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
@@ -143,7 +136,8 @@ if 'CLIENT_ORIGIN' in os.environ:
     ]
 
 if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    extracted_url = re.match(r'^.+-', os.environ.get(
+        'CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
     CORS_ALLOWED_ORIGIN_REGEXES = [
         rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
     ]
@@ -169,9 +163,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'scrshot_api.wsgi.application'
-
-
-
 
 
 # Password validation

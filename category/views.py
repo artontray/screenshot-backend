@@ -15,7 +15,8 @@ from scrshot_api.permissions import IsOwnerOrReadOnly, IsOwner, IsLoggedIn
 class CategoryList(generics.ListCreateAPIView):
     """
     List all Category for the logged user
-    First category creation handled by django signals when creating an New User,
+    First category creation handled by django signals when
+    creating an New User,
     more category can be created by user.
     """
     permission_classes = [IsOwner]
@@ -24,10 +25,10 @@ class CategoryList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-
     def get_queryset(self):
         queryset = Category.objects.filter(owner=self.request.user).annotate(
-                    private_screenshots_count=Count('private_scrt_count', distinct=True)
+                    private_screenshots_count=Count(
+                        'private_scrt_count', distinct=True)
                 ).order_by('-created_at')
         return queryset
 
@@ -49,7 +50,7 @@ class CategoryList(generics.ListCreateAPIView):
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CategorySerializer
     permission_classes = [IsOwner]
-    
+
     def get_object(self, pk):
         try:
             categories = Category.objects.get(pk=pk)
@@ -63,7 +64,7 @@ class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
         serializer = CategorySerializer(
             categories, context={'request': request}
         )
-        
+
         return Response(serializer.data)
 
     def put(self, request, pk):
@@ -75,7 +76,7 @@ class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
     def delete(self, request, pk):
         categories = self.get_object(pk)
         # We have to check at least one category left.
@@ -87,4 +88,4 @@ class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
             return Response(status=status.HTTP_403_FORBIDDEN)
         return Response(
             status=status.HTTP_204_NO_CONTENT
-    )
+        )
