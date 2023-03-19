@@ -6,6 +6,8 @@ To enhance your reading experience of this documentation, we recommend not using
 
 In today's digital world, we often struggle to locate important resources when we need them the most. Thankfully, we have a helpful tool called a screenshot, which enables us to capture and preserve a screen image of vital information or instant snapshots of a situation. If you have ever searched for an old email with critical address details, you can relate to the challenge of finding specific screenshots of this event from a massive collection of files with generic names on Desktop location. Sometimes, we may need to capture evidence of a non-working service or keep a record of changes made to a system. However, locating the right screenshot from hundreds of files can be time-consuming and frustrating. 
 
+![TABLES](media/readme-files/scrollingscreenshots.gif)
+
 
 
 There have been many instances where I have needed an application that allows me to search for a specific screenshot using keywords. That is precisely what the Screenshot Organizer app does, and it is the focus of this document that I will be presenting.
@@ -32,7 +34,9 @@ some ability to :
 - build an App with Back-End and Front-end developpement
 - code with ReactJS
 
-[Check this out](>)
+[Back-End : Check this out!](https://screenshot-organizer-backend.herokuapp.com/)
+
+[Front-End : Check this out!](https://screenshot-organizer-frontend.herokuapp.com/home)
 
 # Screenshot Organizer
 
@@ -47,6 +51,7 @@ So, whether it's a funny meme, a touching message from a loved one, or an inspir
 # Contents
 
 * [Database Schema](<#database-schema>)
+* [Some Thinkings](<#some-thinkings>)
 * [Technologies Used](<#technologies-used>)
      * [Languages](<#languages>)
      * [Libraries](<#libraries>)
@@ -57,16 +62,15 @@ So, whether it's a funny meme, a touching message from a loved one, or an inspir
      * [Manual Testing](#manual-testing)
      * [CRUD Testing](#crud-testing)
      * [Validator Testing](#validator-testing)
+* [Features](#features)
+* [Future Features](#future-features)
 * [Bugs](<#bugs>)
     * [Fixed](<#fixed>)
     * [Unfixed](<#unfixed>)
-* [Project Setup](<#project-setup>)
+
 * [Deployment](<#deployment>)
-    * [Set up JSON web tokens](<#set-up-json-web-tokens>)
-    * [API for deployment to Heroku](<#api-for-deployment-to-heroku>)
-    * [Deploy to Heroku](<#deploy-to-heroku>)
-    * [extra environment variables](<#extra-environment-variables>)
-* [Credits](<#credits>)
+    * [Set up and configuration](<#set-up-and-configuration>)
+* [Credits and media](<#credits-and-media>)
 * [Media](<#media>)
 
 
@@ -77,19 +81,38 @@ The database for this project is composed by :
 - User : To store a new user's username and password.
 - Profiles : to register User's Profile (avatar, description etc..)
 - Screenshot_public : to store a post with a screenshot, content, title , image.
-- Scrennshot_private : to store a post with a private screenshot : content, image, title, category (see below)
-- Category : to store all the different categories of private screenshots (emails, jobs, entertainement, flights, meetings, social media etc...)
+- Screenshot_private : to store a post with a private screenshot with content, image, title, category (see below)
+- Category : to store all the differents categories of private screenshots (emails, jobs, entertainement, flights, meetings, social media, foods, bills, conversations chat etc...)
 - Comment : to store all the comment connected to a public screenshot
 - followers : to store all the followers and followings id of user so we known who is following who
 - likes : to store all the likes register to public screenshots
 
-To accomplish this, I had to develop a database table model to streamline the application's functionality. I used [Visual Studio Code](https://code.visualstudio.com/) to generate the following :
+To accomplish this, I had to develop a database table model to streamline the application's functionality. I used [Visual Studio Code](https://code.visualstudio.com/) to generate the following : (If the content seems black, turn off NIGHT mode on github please :-D)
 
 ![TABLES](media/readme-files/TABLE_SCREENSHOT_ORGANIZER.png)
 
 [Back to top](<#contents>)
 
+# Some thinkings
 
+Prior to starting the app development process, I conducted a thorough evaluation to determine the app's purpose. As I recognized that the back end of the app needed to be well-designed for optimal front-end coding, I spent considerable time contemplating the user experience (UX) and placement of the search bar. The REST framework's permissions feature afforded me the opportunity to plan data accessibility and determine what type of data would be accessible to whom and how.
+
+I began by establishing a UX that was conducive to the design of the app, ensuring that users could add as many categories as they wished without page-loading delays. To accomplish this, pagination was necessary. My main objective was to create a tool that enabled users to locate the desired information rapidly. Thus, I implemented a search bar, which allows users to search screenshots inside a  selected category items, search a screenshot in general or by users.
+
+To create a clear delineation between the public and private aspects of the app, I split the app into two distinct spaces: Private and Public. Private space is reserved for personal screenshots and is accessible only to the owner. Users cannot comment, like, or share these screenshots. Public space allows users to publish their screenshots, and any user, whether logged in or not, can view them. However, users must log in to comment, like, and follow the owner of a screenshot.
+
+To help users locate categories quickly, I devised a unique method of categorization using images or avatars. Users can choose an avatar that best represents their category. 
+
+![features](media/readme-files/features15.png)
+
+I placed a character limit on the category name to maintain good CSS display.
+
+Finally, I applied specific criteria to uploaded images, including size, height, and width, to avoid overloading the app or displaying poorly due to large images.
+
+
+
+
+[Back to top](<#contents>)
 # Technologies Used
 
 ### Languages
@@ -400,7 +423,7 @@ EndPoints Testing :
 | UPDATE | 404 error | &check; | 404 error | &check; |
 
 
-- App private_screenshots
+- App public_screenshots
 
 | Action | Not Logged | owner(logged) | Not owner(logged) | Checked? |
 |:-------:|:--------|:--------|:--------|:--------|
@@ -416,9 +439,409 @@ EndPoints Testing :
 
 ### Validator Testing
 
+I used [Pep8 Validator](https://pep8ci.herokuapp.com/) to check my python code into all python file of the project, all results below are with no errors :
+
+![PEP8 Testing](media/readme-files/validationpep-1.png)
+
+![PEP8 Testing](media/readme-files/validationpep-2.png)
+
+![PEP8 Testing](media/readme-files/validationpep-3.png)
+
+![PEP8 Testing](media/readme-files/validationpep-4.png)
+
+[Back to top](<#contents>)
+
+![PEP8 Testing](media/readme-files/validationpep-5.png)
+
+![PEP8 Testing](media/readme-files/validationpep-6.png)
+
+![PEP8 Testing](media/readme-files/validationpep-7.png)
+
+![PEP8 Testing](media/readme-files/validationpep-8.png)
+
+[Back to top](<#contents>)
+
+![PEP8 Testing](media/readme-files/validationpep-9.png)
+
+![PEP8 Testing](media/readme-files/validationpep-10.png)
+
+![PEP8 Testing](media/readme-files/validationpep-11.png)
+
+![PEP8 Testing](media/readme-files/validationpep-12.png)
+
+[Back to top](<#contents>)
+
+![PEP8 Testing](media/readme-files/validationpep-13.png)
+
+![PEP8 Testing](media/readme-files/validationpep-14.png)
+
+![PEP8 Testing](media/readme-files/validationpep-15.png)
+
+![PEP8 Testing](media/readme-files/validationpep-16.png)
+
+[Back to top](<#contents>)
+
+![PEP8 Testing](media/readme-files/validationpep-17.png)
+
+![PEP8 Testing](media/readme-files/validationpep-18.png)
+
+![PEP8 Testing](media/readme-files/validationpep-19.png)
+
+![PEP8 Testing](media/readme-files/validationpep-20.png)
+
+[Back to top](<#contents>)
+
+![PEP8 Testing](media/readme-files/validationpep-21.png)
+
+![PEP8 Testing](media/readme-files/validationpep-22.png)
+
+[Back to top](<#contents>)
+
+
+# Features
+
+All categories will be displayed order by "number of private screenshot" :
+
+![Features](media/readme-files/features1.png)
+
+![Features](media/readme-files/features2.png)
+
+
+
+![Features](media/readme-files/features4.png)
+
+
+![Features](media/readme-files/features5.png)
+
+[Back to top](<#contents>)
+
+When a User is created, automatically a first category is registered into database.
+When user want to add a private screenshot to the App, User will have to select in what category
+it will be published. 
+
+
+![Features](media/readme-files/features6.png)
+
+![Features](media/readme-files/features11.png)
+
+This Fields cannot be empty, otherwise a new screenshot cannot be added to the database. (Filed required and is a Foreign Key from Private screenshot Model).
+
+![Features](media/readme-files/features14.png)
+
+So for that, I also check that when is about deleting a category always at least one category is left.
+
+![Features](media/readme-files/features3.png)
+
+If user try to delete the last category, it will see the following message :
+
+![Features](media/readme-files/features12.png)
+
+[Back to top](<#contents>)
+
+Public/private screenshot count for profile :
+
+![Features](media/readme-files/features7.png)
+
+![Features](media/readme-files/features13.png)
+
+Some filter for profiles Models :
+
+![Features](media/readme-files/features8.png)
+
+Some filters for public screenshots :
+
+![Features](media/readme-files/features9.png)
+
+
+
 
 
 
 [Back to top](<#contents>)
+
+
+# Future Features
+
+
+  - Allow more type of file to upload as pdf or txt
+  - Encryption of the images so they cannot be displayed even you have the raw URL from the CLoud where are situated the files
+  - Proof of Action stamp joined to public screenshot to proof authenticity. So users cannot publish a screenshot that already been published by an other user. Copyrights scan can be implemented.
+
+
+[Back to top](<#contents>)
+
+# Bugs
+
+### Fixed
+
+First deployment on Heroku, I got a error message :
+
+![Bugs](media/readme-files/bugfixed04.png)
+
+Fixed by following the intructions :
+
+![Bugs](media/readme-files/bugfixed05.png)
+
+An other bugs came up when i changed some parameters to one of the models : max_length = 25
+
+![Bugs](media/readme-files/bugfixed02.png)
+
+Unfortunately, I had already some items into database with a length reaching 50 characters, so it gives this following error :
+
+![Bugs](media/readme-files/bugfixed01.png)
+
+I had 2 options :
+- deal with deleting previous migrations and risking to loose integrity into database
+- delete manually all the items with characters > 25
+
+I chosed the second option for more security.
+
+[Back to top](<#contents>)
+
+### Unfixed
+
+No Unfixed bugs...
+
+[Back to top](<#contents>)
+
+# Deployment
+
+### Set up and configuration
+
+The project was deployed to [Heroku](https://www.heroku.com). To deploy, please follow the process below:
+
+The site was deployed to Heroku cloud Platform. To be able to run your python program on the web, you need Heroku Cloud platform to host it and deploy. There are severals steps to proceed, please , follow carefully every steps :
+
+1. Follow this link : [Code Institute template](https://github.com/Code-Institute-Org/gitpod-full-template) and then click 'Use this template'.
+
+
+2. Then click 'Create Repository From Template'.
+
+3. Click Green 'Gitpod' button on right side of the page.
+
+
+4. Install Django and libraries. to do that, type the commands below :
+
+<details><summary>Commands to install Django and Libraries</summary>
+
+  * ```pip install 'django<4'```
+  * ```django-admin startproject YOUR API .```
+  * ```pip install django-cloudinary-storage```
+  * ```pip install Pillow```
+  * ```pip install djangorestframework```
+  * ```pip install django-filter```
+  * ```pip install dj-rest-auth==2.1.9```
+  * ```pip install 'dj-rest-auth[with_social]'```
+  * ```pip install djangorestframework-simplejwt```
+  * ```pip3 install gunicorn django-cors-headers```
+  * ```pip install dj_database_url psycopg2```
+  * ```pip install dj_database_url psycopg2```
+  
+</details><br />  
+
+![Deployment](media/readme-files/deploy01.png)
+
+On settings.py : 
+
+![Deployment](media/readme-files/deploy02.png)
+
+on urls.py : 
+
+![Deployment](media/readme-files/deploy03.png)
+
+create the file requirements with all dependencies :
+
+![Deployment](media/readme-files/deploy04.png)
+
+Make sure you have this version of dj-rest-auth into requirements file :
+
+![Deployment](media/readme-files/deploy05.png)
+
+First migration :
+
+![Deployment](media/readme-files/deploy06.png)
+
+[Back to top](<#contents>)
+
+![Deployment](media/readme-files/deploy07.png)
+
+On urls.py file :
+
+![Deployment](media/readme-files/deploy08.png)
+
+[Back to top](<#contents>)
+
+Settings.py file : 
+
+![Deployment](media/readme-files/deploy09.png)
+
+![Deployment](media/readme-files/deploy10.png)
+
+![Deployment](media/readme-files/deploy11.png)
+
+![Deployment](media/readme-files/deploy12.png)
+
+Create a file env.py before first git push! important
+
+![Deployment](media/readme-files/deploy13.png)
+
+[Back to top](<#contents>)
+
+Take out this line from settings.py :
+
+![Deployment](media/readme-files/deploy14.png)
+
+On settings.py : 
+
+![Deployment](media/readme-files/deploy15.png)
+
+Create an new instance on ElephantSQL:
+
+![Deployment](media/readme-files/deploy16.png)
+
+Create a new instance on Heroku platform:
+
+![Deployment](media/readme-files/deploy17.png)
+
+[Back to top](<#contents>)
+
+Create a new App:
+
+![Deployment](media/readme-files/deploy18.png)
+
+![Deployment](media/readme-files/deploy19.png)
+
+Configuration CONFIG VARS :
+
+![Deployment](media/readme-files/deploy20.png)
+
+On settings.py :
+
+![Deployment](media/readme-files/deploy21.png)
+
+Env.py :
+
+![Deployment](media/readme-files/deploy22.png)
+
+on Settings.py :
+
+![Deployment](media/readme-files/deploy23.png)
+
+![Deployment](media/readme-files/deploy24.png)
+
+![Deployment](media/readme-files/deploy25.png)
+
+![Deployment](media/readme-files/deploy26.png)
+
+Create a Procfile :
+
+![Deployment](media/readme-files/deploy27.png)
+
+[Back to top](<#contents>)
+
+With this content :
+
+![Deployment](media/readme-files/deploy28.png)
+
+Settings.py : 
+
+![Deployment](media/readme-files/deploy29.png)
+
+Adding some new VARS to heroku :
+
+![Deployment](media/readme-files/deploy30.png)
+
+settings.py :
+
+![Deployment](media/readme-files/deploy31.png)
+
+![Deployment](media/readme-files/deploy32.png)
+
+![Deployment](media/readme-files/deploy33.png)
+
+![Deployment](media/readme-files/deploy34.png)
+
+![Deployment](media/readme-files/deploy35.png)
+
+Set DEBUG on 'DEV' , if DEV = 1 into env.py it will run as DEV 
+
+![Deployment](media/readme-files/deploy36.png)
+
+[Back to top](<#contents>)
+
+Update dependencies :
+
+![Deployment](media/readme-files/deploy37.png)
+Settings.py : 
+
+![Deployment](media/readme-files/deploy38.png)
+
+![Deployment](media/readme-files/deploy39.png)
+
+Make migration :
+
+![Deployment](media/readme-files/deploy40.png)
+
+Connect your github account to Heroku :
+
+![Deployment](media/readme-files/deploy41.png)
+
+[Back to top](<#contents>)
+
+Deploy the app : It's LIVE
+
+![Deployment](media/readme-files/deploy42.png)
+
+Create a super User :
+
+![Deployment](media/readme-files/deploy43.png)
+
+Check that superuser is created :
+
+![Deployment](media/readme-files/deploy44.png)
+
+If any problems during deployment, first, be sure to have the following on your requirements.txt file :
+
+![Deployment](media/readme-files/features10.png)
+
+
+[Back to top](<#contents>)
+
+# Credits and Media
+
+
+
+* The Text of the App is provided by me
+* The favicon came from [Favicon](https://favicon.io/)
+* Some of images on the App has been created with [Bitmoji](https://www.bitmoji.com/)
+* The rest of the images came from a very old harddisk I have from 2003 with images from the web in general.
+
+
+## Best part of this project
+
+To be honest, best parts of my learning progress in this project are the following :
+- Learning REST framework
+- Learning how to set up database on back-end with filter and permissions configuration
+- Learning more about Django in general
+
+
+[Back to top](<#contents>)
+
+## Personal Development
+
+I am extremely pleased with the experience of working on this project, as it has provided me with valuable insights into database building. My perspective has been transformed, and I now possess powerful tools that enable me to create well-configured and coded backends. With this newfound knowledge, I can develop apps much more efficiently and effectively, resulting in faster front-end development.
+
+[Back to top](<#contents>)
+
+## Acknowledgements
+This App was completed as a Portfolio 5 Project (Back-end Part) for the Full Stack Software Developer Diploma at the [Code Institute](https://codeinstitute.net/).
+As such I would like to thank the REST framework Team for writing this fantastic documentation for us, the Slack community for the good vibes and my mentor **Martina** for the support.
+
+This material has been prepared for educational purposes only.
+
+Damien B.
+
+[Back to top](<#contents>)
+
 veed for gif image
 Bitmoji.com for images
