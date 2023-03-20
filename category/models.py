@@ -16,7 +16,7 @@ class Category(models.Model):
     title = models.CharField(max_length=50, default='Main', blank=False)
     description = models.TextField(blank=True)
     image = models.ImageField(
-        upload_to='images/', default='../category_image_mktm2q', blank=True
+        upload_to='images/', default='../upload_zqut5l', blank=True
     )
 
     class Meta:
