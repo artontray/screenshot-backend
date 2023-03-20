@@ -103,7 +103,7 @@ To create a clear delineation between the public and private aspects of the app,
 
 To help users locate categories quickly, I devised a unique method of categorization using images or avatars. Users can choose an avatar that best represents their category. 
 
-![features](media/readme-files/features15.png)
+![features](media/readme-files/features16.png)
 
 I placed a character limit on the category name to maintain good CSS display.
 
@@ -439,7 +439,7 @@ EndPoints Testing :
 
 ### Validator Testing
 
-I used [Pep8 Validator](https://pep8ci.herokuapp.com/) to check my python code into all python file of the project, all results below are with no errors :
+I used [Pep8 Validator](https://pep8ci.herokuapp.com/) to check my python code into all python file of the project, all results below are with no errors (Except one :-D) :
 
 ![PEP8 Testing](media/readme-files/validationpep-1.png)
 
@@ -493,6 +493,9 @@ I used [Pep8 Validator](https://pep8ci.herokuapp.com/) to check my python code i
 
 ![PEP8 Testing](media/readme-files/validationpep-21.png)
 
+I still have some errors on this file but i don't dare to touch it. It will may be breaks the path ?
+
+
 ![PEP8 Testing](media/readme-files/validationpep-22.png)
 
 [Back to top](<#contents>)
@@ -524,15 +527,15 @@ it will be published.
 
 ![Features](media/readme-files/features11.png)
 
-This Fields cannot be empty, otherwise a new screenshot cannot be added to the database. (Filed required and is a Foreign Key from Private screenshot Model).
+To add a new screenshot to the database, the "Field" that serves as a Foreign Key from the Private Screenshot Model must not be left empty, as it is a required field.
 
 ![Features](media/readme-files/features14.png)
 
-So for that, I also check that when is about deleting a category always at least one category is left.
+In order to ensure that there is always at least one category remaining, I verify that when a category is being deleted, there must always be at least one category remaining.
 
 ![Features](media/readme-files/features3.png)
 
-If user try to delete the last category, it will see the following message :
+If user try to delete the last category, it will show up the following message :
 
 ![Features](media/readme-files/features12.png)
 
@@ -565,7 +568,7 @@ Some filters for public screenshots :
 
   - Allow more type of file to upload as pdf or txt
   - Encryption of the images so they cannot be displayed even you have the raw URL from the CLoud where are situated the files
-  - Proof of Action stamp joined to public screenshot to proof authenticity. So users cannot publish a screenshot that already been published by an other user. Copyrights scan can be implemented.
+  - Proof of Action stamp joined to public screenshot : To authenticate the legitimacy of a public screenshot, a Proof of Action stamp is added to it. This helps prevent users from publishing screenshots that have already been published by other users. Additionally, a copyright scan can be implemented as an added measure of protection.
 
 
 [Back to top](<#contents>)
@@ -592,9 +595,9 @@ Unfortunately, I had already some items into database with a length reaching 50 
 
 I had 2 options :
 - deal with deleting previous migrations and risking to loose integrity into database
-- delete manually all the items with characters > 25
+- delete manually all the items with characters > 25 before migrating again.
 
-I chosed the second option for more security.
+I chosed the second option for more safety.
 
 [Back to top](<#contents>)
 
@@ -767,14 +770,19 @@ Set DEBUG on 'DEV' , if DEV = 1 into env.py it will run as DEV
 
 ![Deployment](media/readme-files/deploy36.png)
 
+![Deployment](media/readme-files/deploy37.png)
+
 [Back to top](<#contents>)
 
 Update dependencies :
 
-![Deployment](media/readme-files/deploy37.png)
-Settings.py : 
+
+
+
 
 ![Deployment](media/readme-files/deploy38.png)
+
+Settings.py : 
 
 ![Deployment](media/readme-files/deploy39.png)
 
@@ -843,5 +851,3 @@ Damien B.
 
 [Back to top](<#contents>)
 
-veed for gif image
-Bitmoji.com for images
