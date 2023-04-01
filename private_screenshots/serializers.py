@@ -5,7 +5,9 @@ from scrshot_api.permissions import IsOwner
 
 
 class PrivateScreenshotSerializer(serializers.ModelSerializer):
-
+    """
+    Serializer for the Private screenshot Model
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')

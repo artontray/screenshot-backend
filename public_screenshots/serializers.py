@@ -4,6 +4,9 @@ from likes.models import Like
 
 
 class PublicScreenshotSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Public screenshot
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
